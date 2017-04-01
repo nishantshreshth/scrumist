@@ -1,37 +1,23 @@
-/* eslint-disable import/default */
-
 import React from 'react';
-import { render } from 'react-dom';
-import { browserHistory } from 'react-router';
-import { AppContainer } from 'react-hot-loader';
-import Root from './components/Root';
-
+import ReactDOM from 'react-dom';
+import MainContainer from './containers/main';
+import createScrumContainter from './containers/createScrumContainter';
+import {fetchInitialData} from './actions';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import { Router, Route, browserHistory} from 'react-router';
+import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
-require('./favicon.ico'); // Tell webpack to load favicon.ico
-import './styles/styles.scss'; // Yep, that's right. You can import SASS/CSS files too! Webpack will run the associated loader and plug this into the page.
-import { syncHistoryWithStore } from 'react-router-redux';
+injectTapEventPlugin();
 
-const store = configureStore();
+const store = configureStore(); // You can also pass in an initialState here
+store.dispatch(fetchInitialData());
 
-// Create an enhanced history that syncs navigation events with the store
-const history = syncHistoryWithStore(browserHistory, store);
-
-
-render(
-  <AppContainer>
-    <Root store={store} history={history} />
-  </AppContainer>,
-  document.getElementById('app')
-);
-
-if (module.hot) {
-  module.hot.accept('./components/Root', () => {
-    const NewRoot = require('./components/Root').default;
-    render(
-      <AppContainer>
-        <NewRoot store={store} history={history} />
-      </AppContainer>,
-      document.getElementById('app')
-    );
-  });
-}
+  ReactDOM.render(
+    <Provider store = {store}>
+      <Router history={browserHistory}>
+      <Route path="/" component={MainContainer}/>
+      <Route path="/create" component={createScrumContainter} />
+    </Router>
+    </Provider>,
+    document.getElementById('app')
+  );

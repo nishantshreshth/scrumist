@@ -1,0 +1,6 @@
+.group {
+  transition: all 0.5s;
+}
+.group:hover {
+  transform: scale(1.6);
+}

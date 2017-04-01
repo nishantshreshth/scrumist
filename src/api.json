@@ -1,0 +1,19 @@
+{
+  "groups": [
+  {
+    "name":"First Group",
+    "id": 1
+  },
+  {
+    "name":"Second Group",
+    "id": 2
+  },
+  {
+    "name": "Third Group",
+    "id": 3
+  }
+],
+"userimage": "http:\/\/rachitgulati.com\/sum-it-up\/img\/me.jpeg",
+"username": "Rachit",
+"userid": "hell-9asdfas-asdfas"
+}
