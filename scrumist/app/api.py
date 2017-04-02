@@ -19,7 +19,10 @@ def getUsers():
 		response["userid"] = userId
 		response["image"] = userInfo["profileImage"]
 		response["groups"] = flockClient.get_groups()
-		return jsonify(response), 200
+		
+		resp = make_response(jsonify(response))
+		resp.headers.add('Access-Control-Allow-Credentials', True)
+		return resp, 200
 	else:
 		return jsonify(response), 200
 

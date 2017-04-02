@@ -1,5 +1,5 @@
 import pymongo
-from flockclient import FlockClient
+
 
 class DBHandler:
 
@@ -44,6 +44,4 @@ class DBHandler:
 		pass
 
 	def getClient(self):
-		pass
-
-
+		return self.conn

@@ -5,8 +5,16 @@ import ast
 from random import random
 from flask import Flask, render_template, make_response,request, redirect
 from dbhandler import DBHandler
-
 dbHandler = DBHandler()
+
+@app.route('/', methods = ["GET"])
+def home():
+	#getContent = request.args
+	#event = ast.literal_eval(getContent.get("flockEvent"))
+	#userId = event["userId"]
+	response = make_response(render_template("index.html"))
+	#response.headers.set('userId', userId)
+	return response
 
 @app.route('/open', methods = ["GET"])
 def install():

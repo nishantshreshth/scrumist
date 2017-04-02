@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
     return {
         groups: state.items.groups || {},
         user: state.items.user || {},
-        isLoading: Boolean(state.groups)
+        isLoading: Boolean(state.items.groups),
+        tasks: state.items.tasks || []
     };
 };
 const mapDipatchToProps = () => {

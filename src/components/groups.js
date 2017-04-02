@@ -1,6 +1,7 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import FontIcon from 'material-ui/FontIcon';
+import Avatar from 'material-ui/Avatar';
 import {red500, greenA200, blue500} from 'material-ui/styles/colors';
 
 const style1 = {
@@ -49,7 +50,7 @@ Groups = ({groups}) => (
     return (
       <Paper style={style} zDepth={2} className = "group" key={key} onClick ={openUrl}>
        <FontIcon className="material-icons" style={iconStyles} color={style.color} hoverColor={greenA200}>
-         {style.icon}
+         {<Avatar src={value.profileImage} size={40} style={{margin: 5, width: 100, height: 100}} />}
        </FontIcon>
        <span style={{position:'relative',top:20, left: -115}} >{value.name}</span>
     </Paper>
